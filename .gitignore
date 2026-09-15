@@ -11,11 +11,6 @@ build/
 .idea/
 *.swp
 
-# Python and notebook caches
-__pycache__/
-*.py[cod]
-.ipynb_checkpoints/
-
 # Credentials and machine-specific configuration
 .env
 secrets.h

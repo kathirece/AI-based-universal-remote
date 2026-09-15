@@ -21,7 +21,7 @@ IRSamsungAc ac(IR_LED_PIN);
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
 
 // ================== GESTURE MODEL ==================
-// Set to 1 after Colab exports a KNN model. Decision Tree is smaller by default.
+// Set to 1 only after installing a compatible KNN model. Decision Tree is smaller by default.
 #define USE_KNN_MODEL 0
 
 constexpr uint8_t WINDOW_SAMPLES = 20;
@@ -133,7 +133,7 @@ void axisFeatures(const float *values, float *features, uint8_t meanIndex,
 }
 
 void extractFeatures(float *features) {
-  // Exact order used by the Colab notebook:
+  // Exact feature order expected by the embedded model:
   // mean xyz, std xyz, min xyz, max xyz, delta xyz.
   axisFeatures(axWindow, features, 0, 3, 6, 9, 12);
   axisFeatures(ayWindow, features, 1, 4, 7, 10, 13);
@@ -399,7 +399,7 @@ void setup() {
 #if GESTURE_MODEL_GENERATED
   Serial.println(USE_KNN_MODEL ? "Gesture model: KNN" : "Gesture model: Decision Tree");
 #else
-  Serial.println("Gesture model: fallback tilt logic (run Colab training for ML)");
+  Serial.println("Gesture model: fallback tilt logic (install a trained model for ML)");
 #endif
   if (!mpuReady) Serial.println("WARNING: MPU6050 not detected; buttons remain available");
 }
