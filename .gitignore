@@ -1,0 +1,26 @@
+# Arduino / PlatformIO build output
+.pio/
+build/
+*.bin
+*.elf
+*.hex
+*.map
+
+# Local editor files
+.vscode/
+.idea/
+*.swp
+
+# Python and notebook caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Credentials and machine-specific configuration
+.env
+secrets.h
+credentials.h
+
+# Captured datasets are ignored by default. Commit only reviewed, anonymized data.
+data/*.csv
+!data/gesture_data_template.csv
